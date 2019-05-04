@@ -312,12 +312,12 @@ class SuperMarioBrosEnv(NESEnv):
     def _x_reward(self):
         """Return the reward based on left right movement between steps."""
         _reward = self._x_position - self._x_position_last
-        _reward *= 0.03
+        _reward *= 0.1
         self._x_position_last = self._x_position
         # TODO: check whether this is still necessary
         # resolve an issue where after death the x position resets. The x delta
         # is typically has at most magnitude of 3, 5 is a safe bound
-        if _reward < -5 or _reward > 5:
+        if _reward < -1 or _reward > 1:
             return 0
 
         return _reward
